@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $target_file = $target_dir . $file_name;
         
         if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
-            $photo_url = "http://183.237.196.106:4435/photo_upload/" . $target_file;
+            $photo_url = "http://photo_upload/" . $target_file;
             
             $stmt = $db->prepare('UPDATE uploads SET photo = :photo WHERE id = :id');
             $stmt->bindValue(':photo', $photo_url, SQLITE3_TEXT);
