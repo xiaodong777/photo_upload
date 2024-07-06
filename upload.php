@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "抱歉，您的文件未被上传。";
     } else {
         if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
-            $photo_url = "http://183.237.196.106:4435/photo_upload/" . $target_file;
+            $photo_url = "http://photo_upload/" . $target_file;
             
             $stmt = $db->prepare('INSERT INTO uploads (photo, remark, timestamp, computer_config, usage_years, asset_number) VALUES (:photo, :remark, :timestamp, :computer_config, :usage_years, :asset_number)');
             $stmt->bindValue(':photo', $photo_url, SQLITE3_TEXT);
